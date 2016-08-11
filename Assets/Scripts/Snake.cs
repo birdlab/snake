@@ -19,6 +19,8 @@ public class Snake : MonoBehaviour
     private bool TL = false;
     private bool TR = false;
 
+    public ParticleSystem explosion;
+
     private GameManager gameManager;
 
     public Material debugMaterial;
@@ -114,14 +116,14 @@ public class Snake : MonoBehaviour
         if (snakelength > 1)
         {
             head = body[snakelength - 1];
-            for (int a = snakelength-1; a > 0; a--)
+            for (int a = snakelength - 1; a > 0; a--)
             {
-                body[a] = body[a-1];
+                body[a] = body[a - 1];
                 body[a].name = gameObject.name + "Body";
             }
             body[0] = head;
             head.transform.position = body[1].transform.position;
-            head.name=gameObject.name + "Head";
+            head.name = gameObject.name + "Head";
 
         }
         head.transform.position += direction;
@@ -129,7 +131,11 @@ public class Snake : MonoBehaviour
         target.rotation = rotation * Quaternion.AngleAxis(cameraAngle, Vector3.right);
 
     }
-
+    public void makeExplosion() {
+        explosion.transform.position=head.transform.position;
+        explosion.transform.rotation=Quaternion.LookRotation(direction, orientation);
+        explosion.Emit(30);
+     }
     IEnumerator Move()
     {
         while (true)
