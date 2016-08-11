@@ -13,7 +13,7 @@ public class PointControler : MonoBehaviour
         float y = Mathf.Floor(Random.Range(-(25f / 2), 25f / 2));
         float z = Mathf.Floor(Random.Range(-(25f / 2), 25f / 2));
         transform.position = new Vector3(x, y, z);
-        setType(Mathf.RoundToInt(Random.Range(0, 3)));
+        setType(Mathf.RoundToInt(Random.Range(0f, 3f)));
     }
     public void setType(int type)
     {

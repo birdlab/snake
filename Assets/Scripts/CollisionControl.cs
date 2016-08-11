@@ -22,7 +22,7 @@ public class CollisionControl : MonoBehaviour
         if (col.name == "brake")
         {
             snake.targetlenght += 1;
-            snake.speed -= 5;
+            snake.speed -= 2;
             col.GetComponent<PointControler>().setRandomState();
         }
         if (col.name == "inside")
